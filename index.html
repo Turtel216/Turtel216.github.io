@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineer | Cloud Native & Backend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-pink': '#ff006e',
+                        'cyber-dark': '#0a0a0a',
+                        'cyber-gray': '#1a1a1a',
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #ff006e, 0 0 10px #ff006e, 0 0 15px #ff006e' },
+                            '100%': { boxShadow: '0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 30px #ff006e' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 30px #ff006e;
+        }
+        
+        .neon-border {
+            border: 2px solid #ff006e;
+            box-shadow: 0 0 10px #ff006e, inset 0 0 10px rgba(255, 0, 110, 0.2);
+        }
+        
+        .neon-border:hover {
+            box-shadow: 0 0 20px #ff006e, inset 0 0 20px rgba(255, 0, 110, 0.3);
+        }
+        
+        .grid-background {
+            background-image: 
+                linear-gradient(rgba(255, 0, 110, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 110, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .cyber-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-tag {
+            background: rgba(255, 0, 110, 0.1);
+            border: 1px solid #ff006e;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(255, 0, 110, 0.2);
+            box-shadow: 0 0 15px rgba(255, 0, 110, 0.5);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff006e;
+            box-shadow: 0 0 10px #ff006e;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(transparent, #ff006e, transparent);
+            opacity: 0.3;
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+    <!-- Scanline Effect -->
+    <div class="scanline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-cyber-dark/95 backdrop-blur-sm border-b border-neon-pink/30">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold neon-text">&lt;/DEV&gt;</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-neon-pink">Home</a>
+                    <a href="#about" class="nav-link hover:text-neon-pink">About</a>
+                    <a href="#skills" class="nav-link hover:text-neon-pink">Skills</a>
+                    <a href="#portfolio" class="nav-link hover:text-neon-pink">Portfolio</a>
+                    <a href="#contact" class="nav-link hover:text-neon-pink">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-neon-pink">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home" class="block py-2 hover:text-neon-pink">Home</a>
+                <a href="#about" class="block py-2 hover:text-neon-pink">About</a>
+                <a href="#skills" class="block py-2 hover:text-neon-pink">Skills</a>
+                <a href="#portfolio" class="block py-2 hover:text-neon-pink">Portfolio</a>
+                <a href="#contact" class="block py-2 hover:text-neon-pink">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center grid-background relative pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="animate-float">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 neon-text">
+                   DIMITRIOS PAPAKONSTANTINOU 
+                </h1>
+                <div class="text-xl md:text-2xl mb-8 text-gray-400">
+                    <span class="text-neon-pink">Backend Developer</span> | 
+                    <span class="text-neon-pink">Systems Programmer</span> | 
+                    <span class="text-neon-pink">Distributed Systems</span>
+                </div>
+                <p class="text-lg mb-12 max-w-2xl mx-auto text-gray-400">
+                    Building scalable, resilient systems in the cloud. 
+                    Specializing in microservices, containerization, and cloud-native architectures.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#portfolio" class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-block">
+                        View Portfolio
+                    </a>
+                    <a href="#contact" class="border border-gray-600 px-8 py-3 rounded-lg hover:border-neon-pink hover:bg-neon-pink/5 transition-all duration-300 inline-block">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-cyber-gray">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
+                &lt; About Me /&gt;
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="cyber-card neon-border rounded-lg p-8">
+                    <p class="text-lg leading-relaxed mb-6">
+                        I'm a passionate <span class="text-neon-pink font-semibold">Software Engineer</span> specializing in 
+                        <span class="text-neon-pink font-semibold">Cloud Native</span> and 
+                        <span class="text-neon-pink font-semibold">Backend Development</span>. 
+                        With expertise in building distributed systems, microservices architectures, and scalable cloud solutions.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6">
+                        I thrive on solving complex technical challenges and creating robust, efficient systems that can handle 
+                        millions of requests. My focus is on writing clean, maintainable code while leveraging modern cloud 
+                        technologies and DevOps practices.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
+                        or sharing knowledge with the developer community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
+                &lt; Tech Stack /&gt;
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Cloud & Infrastructure -->
+                <div class="cyber-card neon-border rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Cloud & Infrastructure</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded">AWS</span>
+                        <span class="skill-tag px-3 py-1 rounded">Kubernetes</span>
+                        <span class="skill-tag px-3 py-1 rounded">Docker</span>
+                    </div>
+                </div>
+
+                <!-- Backend Technologies -->
+                <div class="cyber-card neon-border rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Backend Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded">Go</span>
+                        <span class="skill-tag px-3 py-1 rounded">Spring</span>
+                        <span class="skill-tag px-3 py-1 rounded">Node.js</span>
+                        <span class="skill-tag px-3 py-1 rounded">Java</span>
+                        <span class="skill-tag px-3 py-1 rounded">REST APIs</span>
+                        <span class="skill-tag px-3 py-1 rounded">gRPC</span>
+                        <span class="skill-tag px-3 py-1 rounded">GraphQL</span>
+                    </div>
+                </div>
+
+                <!-- DevOps & Tools -->
+                <div class="cyber-card neon-border rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">DevOps & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded">CI/CD</span>
+                        <span class="skill-tag px-3 py-1 rounded">GitLab CI</span>
+                        <span class="skill-tag px-3 py-1 rounded">Github Actions</span>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="cyber-card neon-border rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Databases</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded">PostgreSQL</span>
+                        <span class="skill-tag px-3 py-1 rounded">MongoDB</span>
+                        <span class="skill-tag px-3 py-1 rounded">MySQL</span>
+                        <span class="skill-tag px-3 py-1 rounded">DynamoDB</span>
+                        <span class="skill-tag px-3 py-1 rounded">Redis</span>
+                    </div>
+                </div>
+
+                <!-- Messaging & Streaming -->
+                <div class="cyber-card neon-border rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Messaging & Streaming</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded">Kafka</span>
+                        <span class="skill-tag px-3 py-1 rounded">RabbitMQ</span>
+                        <span class="skill-tag px-3 py-1 rounded">EventBridge</span>
+                    </div>
+                </div>
+
+                <!-- Architecture & Practices -->
+                <div class="cyber-card neon-border rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Architecture & Practices</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag px-3 py-1 rounded">Microservices</span>
+                        <span class="skill-tag px-3 py-1 rounded">Event-Driven</span>
+                        <span class="skill-tag px-3 py-1 rounded">Serverless</span>
+                        <span class="skill-tag px-3 py-1 rounded">DDD</span>
+                        <span class="skill-tag px-3 py-1 rounded">TDD</span>
+                        <span class="skill-tag px-3 py-1 rounded">Agile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-cyber-gray">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
+                &lt; Portfolio /&gt;
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Project 1 - Template -->
+                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
+                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-neon-pink">Cloud Native Platform</h3>
+                        <p class="text-gray-400 mb-4">
+                            Scalable microservices platform built with Kubernetes, handling 1M+ requests/day with 99.9% uptime.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Kubernetes</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Go</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">gRPC</span>
+                        </div>
+                        <a href="#" class="text-neon-pink hover:underline inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Template -->
+                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
+                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-neon-pink">Distributed Data Pipeline</h3>
+                        <p class="text-gray-400 mb-4">
+                            Real-time data processing pipeline using Apache Kafka and stream processing frameworks.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Kafka</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">AWS</span>
+                        </div>
+                        <a href="#" class="text-neon-pink hover:underline inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Template -->
+                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
+                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-neon-pink">Serverless API Gateway</h3>
+                        <p class="text-gray-400 mb-4">
+                            High-performance API gateway with auto-scaling, rate limiting, and JWT authentication.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Lambda</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Node.js</span>
+                        </div>
+                        <a href="#" class="text-neon-pink hover:underline inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Add more projects as needed -->
+                
+            </div>
+            <div class="text-center mt-12">
+                <p class="text-gray-400 mb-4">Want to see more projects?</p>
+                <a href="https://gitlab.com/yourusername" target="_blank" rel="noopener noreferrer" 
+                   class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 0 0-.867 0L1.387 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.924.924 0 0 0 .331-1.024"/>
+                    </svg>
+                    Visit My GitLab
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
+                &lt; Get In Touch /&gt;
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="cyber-card neon-border rounded-lg p-8 text-center">
+                    <p class="text-xl mb-8 text-gray-400">
+                        I'm always interested in hearing about new opportunities, collaborations, or just chatting about technology.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/dimitrios-papakonstantinou-44a7672b3/" target="_blank" rel="noopener noreferrer"
+                           class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-3 w-64">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+
+                        <!-- GitLab -->
+                        <a href="gitlab.com/papakonstantinou" target="_blank" rel="noopener noreferrer"
+                           class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-3 w-64">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 0 0-.867 0L1.387 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.924.924 0 0 0 .331-1.024"/>
+                            </svg>
+                            <span>GitLab</span>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:papakonstantinou.dm@gmail.com"
+                           class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-3 w-64">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Email Me</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-neon-pink/30 bg-cyber-dark">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 mb-4 md:mb-0">
+                    © 2025 | Dimitrios Papakonstantinou 
+                </div>
+                <div class="flex gap-6">
+                    <a href="https://www.linkedin.com/in/dimitrios-papakonstantinou-44a7672b3/" target="_blank" rel="noopener noreferrer" 
+                       class="text-gray-400 hover:text-neon-pink transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://gitlab.com/papakonstantinou" target="_blank" rel="noopener noreferrer"
+                       class="text-gray-400 hover:text-neon-pink transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.955 13.587l-1.342-4.135-2.664-8.189a.455.455 0 0 0-.867 0L16.418 9.45H7.582L4.918 1.263a.455.455 0 0 0-.867 0L1.387 9.452.045 13.587a.924.924 0 0 0 .331 1.023L12 23.054l11.624-8.443a.924.924 0 0 0 .331-1.024"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll behavior is handled by Tailwind's scroll-smooth class on html element
+    </script>
+</body>
+</html>
