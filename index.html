@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimitrios Papakonstantinou</title>
+    <title>Dimitrios Papakonstantinou | Compiler Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -119,10 +119,8 @@
     </style>
 </head>
 <body class="text-gray-300">
-    <!-- Scanline Effect -->
     <div class="scanline"></div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-cyber-dark/95 backdrop-blur-sm border-b border-neon-pink/30">
         <div class="container mx-auto px-6 py-4">
                 <div class="flex justify-between items-center">
@@ -145,7 +143,6 @@
                     </button>
                 </div>
             </div>
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
                 <a href="#home" class="block py-2 hover:text-neon-pink">Home</a>
                 <a href="#about" class="block py-2 hover:text-neon-pink">About</a>
@@ -156,21 +153,19 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center grid-background relative pt-20">
         <div class="container mx-auto px-6 text-center">
             <div class="animate-float">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 neon-text">
-                   Backend Developer 
+                   Compiler Engineer 
                 </h1>
                 <div class="text-xl md:text-2xl mb-8 text-gray-400">
-                    <span class="text-neon-pink">API Development</span> | 
-                    <span class="text-neon-pink">Microservices</span> | 
-                    <span class="text-neon-pink">Distributed Systems</span>
+                    <span class="text-neon-pink">Language Design</span> | 
+                    <span class="text-neon-pink">Systems Programming</span> | 
+                    <span class="text-neon-pink">Optimizations</span>
                 </div>
                 <p class="text-lg mb-12 max-w-2xl mx-auto text-gray-400">
-                    Building scalable, high-performance backend systems.
-                    Specializing in API design, microservices architecture, and database optimization with a deep understanding of low-level systems.
+                    Specializing in language implementation, compiler backends and low-level performance.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="#portfolio" class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-block">
@@ -184,7 +179,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-20 bg-cyber-gray">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
@@ -193,108 +187,92 @@
             <div class="max-w-4xl mx-auto">
                 <div class="cyber-card neon-border rounded-lg p-8">
                     <p class="text-lg leading-relaxed mb-6">
-                        I'm passionate about <span class="text-neon-pink font-semibold">backend development</span> and building robust, scalable systems. I love working with
-                        <span class="text-neon-pink font-semibold">Java Spring Boot</span>, 
-                        <span class="text-neon-pink font-semibold">Go</span>,
-                        <span class="text-neon-pink font-semibold">TypeScript</span> and
+                        I am a systems and language enthusiast dedicated to <span class="text-neon-pink font-semibold">Compiler Engineering</span>. I love getting under the hood to understand how high-level abstractions map down to the metal, leveraging languages like
+                        <span class="text-neon-pink font-semibold">C</span>, 
+                        <span class="text-neon-pink font-semibold">Rust</span>,
+                        <span class="text-neon-pink font-semibold">C++</span> and
                         <span class="text-neon-pink font-semibold">Haskell</span>
-                        to create efficient, reliable, and maintainable backend services.
+                        to craft high-performance interpreters and systems software.
                     </p>
                     <p class="text-lg leading-relaxed mb-6">
-                        My interests include
-                        <span class="text-neon-pink font-semibold">RESTful API design</span>, 
-                        <span class="text-neon-pink font-semibold">microservices architecture</span>,
-                        <span class="text-neon-pink font-semibold">database optimization</span> and 
-                        <span class="text-neon-pink font-semibold">distributed systems</span>.
-                    </p>
-                    <p class="text-lg leading-relaxed">
-                        My background in systems programming gives me a unique perspective on performance optimization and understanding how software interacts with infrastructure at a deeper level.
+                        My interests lie heavily in
+                        <span class="text-neon-pink font-semibold">semantic analysis</span>,
+                        <span class="text-neon-pink font-semibold">middle-end optimizations</span>,
+                        <span class="text-neon-pink font-semibold">AST manipulation</span>, and 
+                        <span class="text-neon-pink font-semibold">operating system internals</span>. 
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
                 &lt; Tech Stack /&gt;
             </h2>
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Programming Languages -->
                 <div class="cyber-card neon-border rounded-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Programming Languages</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Languages</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 rounded">Java</span>
-                        <span class="skill-tag px-3 py-1 rounded">Go</span>
-                        <span class="skill-tag px-3 py-1 rounded">TypeScript</span>
-                        <span class="skill-tag px-3 py-1 rounded">Haskell</span>
-                        <span class="skill-tag px-3 py-1 rounded">Rust</span>
                         <span class="skill-tag px-3 py-1 rounded">C</span>
+                        <span class="skill-tag px-3 py-1 rounded">C++</span>
+                        <span class="skill-tag px-3 py-1 rounded">Rust</span>
+                        <span class="skill-tag px-3 py-1 rounded">Haskell</span>
+                        <span class="skill-tag px-3 py-1 rounded">OCaml</span>
+                        <span class="skill-tag px-3 py-1 rounded">Go</span>
                     </div>
                 </div>
 
-                <!-- Frameworks & Libraries -->
                 <div class="cyber-card neon-border rounded-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Frameworks & Libraries</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Compiler Theory</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 rounded">Spring</span>
-                        <span class="skill-tag px-3 py-1 rounded">Node.js</span>
-                        <span class="skill-tag px-3 py-1 rounded">Express</span>
-                        <span class="skill-tag px-3 py-1 rounded">React</span>
-                        <span class="skill-tag px-3 py-1 rounded">NextJS</span>
-                        <span class="skill-tag px-3 py-1 rounded">Gin</span>
+                        <span class="skill-tag px-3 py-1 rounded">Lexing & Parsing</span>
+                        <span class="skill-tag px-3 py-1 rounded">ASTs</span>
+                        <span class="skill-tag px-3 py-1 rounded">Intermediate Representations</span>
+                        <span class="skill-tag px-3 py-1 rounded">Middle-end Optimizations</span>
+                        <span class="skill-tag px-3 py-1 rounded">Semantic Analysis</span>
+                        <span class="skill-tag px-3 py-1 rounded">Code Generation</span>
                     </div>
                 </div>
 
-                <!-- Databases -->
                 <div class="cyber-card neon-border rounded-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Databases</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Compiler Tech & Tools</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 rounded">PostgreSQL</span>
-                        <span class="skill-tag px-3 py-1 rounded">MySQL</span>
-                        <span class="skill-tag px-3 py-1 rounded">Redis</span>
-                        <span class="skill-tag px-3 py-1 rounded">MongoDB</span>
+                        <span class="skill-tag px-3 py-1 rounded">LLVM IR (Familiar)</span>
+                        <span class="skill-tag px-3 py-1 rounded">CMake</span>
+                        <span class="skill-tag px-3 py-1 rounded">GDB</span>
+                        <span class="skill-tag px-3 py-1 rounded">Make</span>
+                        <span class="skill-tag px-3 py-1 rounded">Lex/Yacc paradigms</span>
+                        <span class="skill-tag px-3 py-1 rounded">Parser Combinators</span>
                     </div>
                 </div>
 
-                <!-- DevOps & Infrastructure -->
                 <div class="cyber-card neon-border rounded-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">DevOps & Infrastructure</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Systems & Architecture</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 rounded">Docker</span>
-                        <span class="skill-tag px-3 py-1 rounded">CI/CD</span>
-                        <span class="skill-tag px-3 py-1 rounded">Linux</span>
-                        <span class="skill-tag px-3 py-1 rounded">Git</span>
+                        <span class="skill-tag px-3 py-1 rounded">x86 Architecture</span>
+                        <span class="skill-tag px-3 py-1 rounded">ARM Architecture</span>
+                        <span class="skill-tag px-3 py-1 rounded">Memory Management</span>
+                        <span class="skill-tag px-3 py-1 rounded">Concurrency</span>
+                        <span class="skill-tag px-3 py-1 rounded">RTOS</span>
                     </div>
                 </div>
 
-                <!-- Architecture & Design -->
                 <div class="cyber-card neon-border rounded-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Architecture & Design</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1 rounded">Monolithic</span>
-                        <span class="skill-tag px-3 py-1 rounded">Microservices</span>
-                        <span class="skill-tag px-3 py-1 rounded">Event-Driven</span>
-                    </div>
-                </div>
-
-                <!-- Systems & Performance -->
-                <div class="cyber-card neon-border rounded-lg p-6">
-                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">API Protocols</h3>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-pink">Backend & Networking</h3>
                     <div class="flex flex-wrap gap-2">
                         <span class="skill-tag px-3 py-1 rounded">REST-APIs</span>
-                        <span class="skill-tag px-3 py-1 rounded">GRPC</span>
-                        <span class="skill-tag px-3 py-1 rounded">Web Sockets</span>
-                        <span class="skill-tag px-3 py-1 rounded">MQTT</span>
+                        <span class="skill-tag px-3 py-1 rounded">Docker</span>
+                        <span class="skill-tag px-3 py-1 rounded">Spring / Node.js</span>
+                        <span class="skill-tag px-3 py-1 rounded">SQL Databases</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 bg-cyber-gray">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
@@ -302,7 +280,6 @@
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 
-                <!-- RestCheck -->
                 <div class="cyber-card neon-border rounded-lg overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
                         <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -310,112 +287,39 @@
                         </svg>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-neon-pink">RestCheck</h3>
+                        <h3 class="text-xl font-bold mb-2 text-neon-pink">Py2c</h3>
                         <p class="text-gray-400 mb-4">
-                           A declarative CLI tool for testing and validating REST APIs. Designed for backend developers who prefer the terminal over GUI-heavy tools like Postman and for usage inside CI/CD pipelines</p>
+                            A proprietary source-to-source compiler translating a custom-designed, type-safe Pythonic language into an HLS (High-Level Synthesis) C subset.
+                        </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Haskell</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">DSL</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">CLI</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">REST-APIs</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">OCaml</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">HLS</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Language Design</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Optimizations</span>
                         </div>
-                        <a href="https://gitlab.com/papakonstantinou/rest-check" class="text-neon-pink hover:underline inline-flex items-center">
-                            View Project
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        <span class="text-gray-500 inline-flex items-center text-sm">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                             </svg>
-                        </a>
+                            Closed Source / Proprietary
+                        </span>
                     </div>
                 </div>
 
-                <!-- CCC -->
                 <div class="cyber-card neon-border rounded-lg overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
                         <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-neon-pink">Maintaning CCC</h3>
-                        <p class="text-gray-400 mb-4">
-                           Maintaining an online platform for creating Custom Coprocessors in various languages</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">PHP</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">MySQL</span>
-                        </div>
-                        <a href="https://ccc.cs.uowm.gr/ccc/" class="text-neon-pink hover:underline inline-flex items-center">
-                            View Project
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- MyCs -->
-                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
-                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
-                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-neon-pink">my.cs.uowm.gr</h3>
-                        <p class="text-gray-400 mb-4">
-                           A unified platform for accessing the services and information of the UoWM Department of Informatics.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Javascript</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">React</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Docker</span>
-                        </div>
-                        <a href="https://my.cs.uowm.gr/" class="text-neon-pink hover:underline inline-flex items-center">
-                            View Project
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- LyriChord -->
-                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
-                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
-                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-neon-pink">LyricChord</h3>
-                        <p class="text-gray-400 mb-4">
-                           A Discord Bot that fetches song lyrics on request</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Go</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">WebSockets</span>
-                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">REST-APIs</span>
-                        </div>
-                        <a href="https://github.com/Turtel216/Xanadu" class="text-neon-pink hover:underline inline-flex items-center">
-                            View Project
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Beavieer Project -->
-                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
-                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
-                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                         </svg>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-neon-pink">Beavieer</h3>
                         <p class="text-gray-400 mb-4">
-                           An interpreted programming language showcasing parser design and runtime implementation. 
+                            An interpreted programming language showcasing hand-written parser design and robust runtime implementation. 
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Rust</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">AST</span>
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Language Design</span>
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">TDD</span>
                         </div>
@@ -428,21 +332,21 @@
                     </div>
                 </div>
 
-                <!-- Xanadu Project -->
                 <div class="cyber-card neon-border rounded-lg overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
                         <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                         </svg>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-neon-pink">Xanadu</h3>
                         <p class="text-gray-400 mb-4">
-                           An interpreted programming language built from scratch in C with custom lexer and parser. 
+                            An interpreted programming language built from scratch in C with custom lexer and parser logic. 
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">C</span>
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Language Design</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Interpreters</span>
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">CMake</span>
                         </div>
                         <a href="https://github.com/Turtel216/Xanadu" class="text-neon-pink hover:underline inline-flex items-center">
@@ -454,7 +358,30 @@
                     </div>
                 </div>
 
-                <!-- CeltigarOS Project -->
+                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
+                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.58 4 8 4s8-1.79 8-4M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4m0 5c0 2.21-3.58 4-8 4s-8-1.79-8-4"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-neon-pink">RestCheck</h3>
+                        <p class="text-gray-400 mb-4">
+                           A declarative Domain Specific Language (DSL) and CLI tool for testing REST APIs, utilizing Haskell's strong type system.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Haskell</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">DSL</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">CLI</span>
+                        </div>
+                        <a href="https://gitlab.com/papakonstantinou/rest-check" class="text-neon-pink hover:underline inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="cyber-card neon-border rounded-lg overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
                         <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -464,7 +391,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-neon-pink">CeltigarOS</h3>
                         <p class="text-gray-400 mb-4">
-                           A microkernel OS demonstrating deep systems knowledge including memory management and process scheduling. 
+                            A microkernel OS demonstrating deep systems knowledge including manual memory management and process scheduling. 
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">Rust</span>
@@ -480,7 +407,6 @@
                     </div>
                 </div>
                 
-                <!-- tuskRTOS Project -->
                 <div class="cyber-card neon-border rounded-lg overflow-hidden group">
                     <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
                         <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -490,7 +416,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-neon-pink">tuskRTOS</h3>
                         <p class="text-gray-400 mb-4">
-                           A Real-Time Operating System showcasing concurrency, scheduling algorithms, and resource management. 
+                            A Real-Time Operating System showcasing hardware-level concurrency, custom scheduling algorithms, and resource management. 
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">C</span>
@@ -505,10 +431,34 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="cyber-card neon-border rounded-lg overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-neon-pink/20 to-cyber-dark flex items-center justify-center">
+                        <svg class="w-20 h-20 text-neon-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-neon-pink">Maintaining CCC</h3>
+                        <p class="text-gray-400 mb-4">
+                           Maintaining an online platform for creating Custom Coprocessors in various languages.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">PHP</span>
+                            <span class="text-xs bg-neon-pink/10 border border-neon-pink/30 px-2 py-1 rounded">MySQL</span>
+                        </div>
+                        <a href="https://ccc.cs.uowm.gr/ccc/" class="text-neon-pink hover:underline inline-flex items-center">
+                            View Project
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
             <div class="text-center mt-12">
-                <p class="text-gray-400 mb-4">Want to see more projects?</p>
+                <p class="text-gray-400 mb-4">Want to see more of my Web and Backend projects?</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="https://gitlab.com/papakonstantinou" target="_blank" rel="noopener noreferrer" 
                        class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-2">
@@ -522,7 +472,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center neon-text">
@@ -531,10 +480,9 @@
             <div class="max-w-4xl mx-auto">
                 <div class="cyber-card neon-border rounded-lg p-8 text-center">
                     <p class="text-xl mb-8 text-gray-400">
-                        I'm always interested in hearing about new opportunities, collaborations, or just chatting about technology.
+                        I'm always interested in hearing about new opportunities in Compiler Engineering, Systems Programming, or chatting about language design.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/dimitrios-papakonstantinou-44a7672b3/" target="_blank" rel="noopener noreferrer"
                            class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-3 w-64">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -543,7 +491,6 @@
                             <span>LinkedIn</span>
                         </a>
 
-                        <!-- Email -->
                         <a href="mailto:papakonstantinou.dm@gmail.com"
                            class="neon-border px-8 py-3 rounded-lg hover:bg-neon-pink/10 transition-all duration-300 inline-flex items-center gap-3 w-64">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -557,22 +504,19 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-8 border-t border-neon-pink/30 bg-cyber-dark">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="text-gray-400 mb-4 md:mb-0">
-                    © 2025 | Dimitrios Papakonstantinou 
+                    © 2026 | Dimitrios Papakonstantinou 
                 </div>
                 <div class="flex gap-6">
-                    <!-- LinkedIn -->
                     <a href="https://www.linkedin.com/in/dimitrios-papakonstantinou-44a7672b3/" target="_blank" rel="noopener noreferrer" 
                        class="text-gray-400 hover:text-neon-pink transition-colors">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                     </a>
-                    <!-- Gitlab -->
                     <a href="https://gitlab.com/papakonstantinou" target="_blank" rel="noopener noreferrer"
                        class="text-gray-400 hover:text-neon-pink transition-colors">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -584,7 +528,6 @@
         </div>
     </footer>
 
-    <!-- Mobile Menu Toggle Script -->
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
