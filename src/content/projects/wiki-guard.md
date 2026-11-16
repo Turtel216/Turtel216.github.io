@@ -16,6 +16,7 @@ highlights:
   - Stateless ingestor that resumes after the last record it wrote and reports any stretch of events it could not recover.
   - Streaming query that copies raw Kafka events into an Iceberg table, taking each batch only once after a crash.
   - Development and tests replay recorded events and never contact Wikimedia.
+period: "2026"
 status: Early development
 order: 2
 ---

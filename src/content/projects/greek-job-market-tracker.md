@@ -15,6 +15,7 @@ highlights:
   - Daily Airflow run that extracts, loads, transforms and tests. If a test fails, the marts are left alone and the dashboard keeps the last good day.
   - Raw payloads are stored unchanged, so a parser fix is replayed over saved data without hitting the site again.
   - Postings from several sources are merged into jobs with deterministic deduplication.
+period: 2025 - 2026 
 status: Built, not yet deployed
 repo: https://github.com/Turtel216/greek-job-market-tracker
 order: 1
@@ -40,6 +41,17 @@ The dashboard answers six questions:
 6. How long do postings stay open?
 
 Only aggregates are published. The dashboard never shows a single posting's text, company or link.
+
+
+## Screenshots 
+
+The public dashboard:
+
+![Public job market dashboard](/images/public-dashboard.png)
+
+The internal pipeline health dashboard:
+
+![Pipeline health dashboard](/images/pipeline-health.png)
 
 ## Architecture
 

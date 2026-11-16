@@ -127,7 +127,7 @@ export const aboutFacts: { label: string; value: string }[] = [
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages',
-    skills: ['Python', 'SQL', 'Scala', 'TypeScript', 'Go', 'Bash'],
+    skills: ['Python', 'SQL', 'Scala', 'TypeScript', 'Go', 'Haskell', 'Java'],
   },
   {
     title: 'Processing and orchestration',
@@ -138,16 +138,13 @@ export const skillGroups: SkillGroup[] = [
     skills: [
       'PostgreSQL',
       'Snowflake',
-      'BigQuery',
       'Delta Lake',
       'Apache Iceberg',
-      'Parquet',
-      'Dimensional modelling',
     ],
   },
   {
     title: 'Cloud and infrastructure',
-    skills: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Linux'],
+    skills: ['Docker', 'Kubernetes', 'GitHub Actions', 'Linux'],
   },
   {
     title: 'Quality and observability',
@@ -155,7 +152,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Web development',
-    skills: ['React', 'Node.js', 'REST APIs', 'Tailwind CSS', 'Astro'],
+    skills: ['React', 'Node.js', 'REST APIs', 'Tailwind CSS', 'NextJS', 'Spring Boot'],
   },
 ];
 
