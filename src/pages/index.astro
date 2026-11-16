@@ -1,0 +1,348 @@
+---
+import { getCollection } from 'astro:content';
+import Icon from '@/components/Icon.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import Section from '@/components/Section.astro';
+import Tag from '@/components/Tag.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { cvUrl } from '@/data/cv';
+import {
+  about,
+  aboutFacts,
+  atAGlance,
+  compilersIntro,
+  contactText,
+  education,
+  experience,
+  profile,
+  publication,
+  skillGroups,
+  volunteering,
+} from '@/data/site';
+
+const all = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+// Data projects always come before web projects, whatever their `order`.
+const mainProjects = [
+  ...all.filter((p) => p.data.category === 'data'),
+  ...all.filter((p) => p.data.category === 'web'),
+];
+const compilerProjects = all.filter((p) => p.data.category === 'compiler');
+
+const hasExperience = experience.length > 0;
+// The first list in the Background section has no divider above it.
+const subsection = (isFirst: boolean) => (isFirst ? '' : 'mt-16 border-t border-line pt-10');
+
+const contactLinks = [
+  { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, icon: 'mail' },
+  { label: 'LinkedIn', value: 'Dimitrios Papakonstantinou', href: profile.social.linkedin, icon: 'linkedin' },
+  { label: 'GitHub', value: 'Turtel216', href: profile.social.github, icon: 'github' },
+  { label: 'GitLab', value: 'papakonstantinou', href: profile.social.gitlab, icon: 'gitlab' },
+] as const;
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section id="top" class="mx-auto max-w-5xl px-6 pt-20 pb-20 sm:pt-28 sm:pb-24">
+    <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+      <div>
+        <p class="mb-5 font-mono text-sm text-accent">{profile.role}</p>
+        <h1 class="text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
+          {profile.name}
+        </h1>
+        <p class="mt-6 max-w-xl text-xl leading-8 text-fg">{profile.tagline}</p>
+        <p class="mt-4 max-w-xl leading-7 text-muted">{profile.intro}</p>
+
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="#projects" class="btn btn-primary">
+            View projects
+            <Icon name="arrow" />
+          </a>
+          <a href="#contact" class="btn btn-secondary">Get in touch</a>
+          {
+            cvUrl && (
+              <a href={cvUrl} class="btn btn-secondary" download>
+                <Icon name="download" />
+                Download CV
+              </a>
+            )
+          }
+        </div>
+      </div>
+
+      <aside aria-label="At a glance" class="rounded-lg border border-line bg-surface">
+        <p class="border-b border-line px-5 py-3 font-mono text-xs tracking-widest text-faint uppercase">
+          At a glance
+        </p>
+        <dl class="divide-y divide-line">
+          {
+            atAGlance.map((row) => (
+              <div class="grid grid-cols-[6.5rem_1fr] gap-3 px-5 py-3 text-sm">
+                <dt class="text-faint">{row.label}</dt>
+                <dd class="text-fg">{row.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- About -->
+  <Section id="about" index="01" title="About me">
+    <div class="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
+      <div class="space-y-5 leading-7 text-muted">
+        {about.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <dl class="space-y-5 self-start border-l border-line pl-6">
+        {
+          aboutFacts.map((fact) => (
+            <div>
+              <dt class="font-mono text-xs tracking-widest text-faint uppercase">{fact.label}</dt>
+              <dd class="mt-1 text-sm text-fg">{fact.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </Section>
+
+  <!-- Skills -->
+  <Section
+    id="skills"
+    index="02"
+    title="Skills"
+  >
+    <div class="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      {
+        skillGroups.map((group) => (
+          <div class="bg-ink p-6">
+            <h3 class="text-sm font-semibold text-fg">{group.title}</h3>
+            <ul class="mt-3 flex flex-wrap gap-1.5">
+              {group.skills.map((skill) => (
+                <Tag>{skill}</Tag>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- Background: work experience (when there is any), education, volunteering -->
+  <Section
+    id="background"
+    index="03"
+    title={hasExperience ? 'Experience' : 'Education and volunteering'}
+  >
+    {
+      hasExperience && (
+    <ol class="space-y-12">
+      {
+        experience.map((job) => (
+          <li class="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-8">
+            <p class="pt-0.5 font-mono text-xs text-faint">
+              {job.start} &ndash; {job.end}
+            </p>
+            <div>
+              <h3 class="text-lg font-semibold tracking-tight text-fg">{job.role}</h3>
+              <p class="mt-0.5 text-sm text-accent">
+                {job.organisation}
+                {job.location && <span class="text-faint"> / {job.location}</span>}
+              </p>
+              {job.summary && <p class="mt-3 leading-7 text-muted">{job.summary}</p>}
+              <ul class="mt-3 list-disc space-y-1.5 pl-4 text-sm leading-6 text-muted marker:text-accent">
+                {job.highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <ul class="mt-4 flex flex-wrap gap-1.5">
+                {job.stack.map((tech) => (
+                  <Tag>{tech}</Tag>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+      )
+    }
+
+    {
+      education.length > 0 && (
+        <div class={subsection(!hasExperience)}>
+          <h3 class="mb-6 font-mono text-xs tracking-widest text-faint uppercase">Education</h3>
+          <ol class="space-y-6">
+            {education.map((item) => (
+              <li class="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-8">
+                <p class="pt-0.5 font-mono text-xs text-faint">
+                  {item.start} &ndash; {item.end}
+                </p>
+                <div>
+                  <h4 class="font-semibold text-fg">{item.degree}</h4>
+                  <p class="mt-0.5 text-sm text-accent">{item.institution}</p>
+                  {item.notes && <p class="mt-2 text-sm leading-6 text-muted">{item.notes}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+
+    {
+      volunteering.length > 0 && (
+        <div class={subsection(!hasExperience && education.length === 0)}>
+          <h3 class="mb-6 font-mono text-xs tracking-widest text-faint uppercase">Volunteering</h3>
+          <ol class="space-y-8">
+            {volunteering.map((item) => (
+              <li class="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-8">
+                <p class="pt-0.5 font-mono text-xs text-faint">{item.period}</p>
+                <div>
+                  <h4 class="font-semibold text-fg">{item.role}</h4>
+                  <p class="mt-0.5 text-sm text-accent">
+                    {item.url ? (
+                      <a href={item.url} class="link" rel="noopener noreferrer">
+                        {item.organisation}
+                      </a>
+                    ) : (
+                      item.organisation
+                    )}
+                  </p>
+                  {item.highlights.length > 0 && (
+                    <ul class="mt-3 list-disc space-y-1.5 pl-4 text-sm leading-6 text-muted marker:text-accent">
+                      {item.highlights.map((highlight) => (
+                        <li>{highlight}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+  </Section>
+
+  <!-- Projects -->
+  <Section
+    id="projects"
+    index="04"
+    title="Projects"
+    intro="Each project has its own page with the problem, the architecture and the main decisions."
+  >
+    <div class="grid gap-5 md:grid-cols-2">
+      {mainProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </Section>
+
+  <!-- Publication -->
+  <Section id="publication" index="05" title="Publication">
+    <article class="rounded-lg border border-line bg-surface p-6 sm:p-8">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <p class="font-mono text-xs text-accent">{publication.venue}</p>
+        {
+          publication.award && (
+            <p class="rounded border border-accent/30 bg-accent-soft px-2 py-0.5 font-mono text-xs text-accent">
+              {publication.award}
+            </p>
+          )
+        }
+      </div>
+      <h3 class="mt-3 text-xl font-semibold tracking-tight text-fg">{publication.title}</h3>
+      <p class="mt-2 text-sm text-muted">
+        {
+          publication.authors.map((author, i) => (
+            <>
+              <span class={author === profile.name ? 'font-medium text-fg' : ''}>{author}</span>
+              {i < publication.authors.length - 1 && ', '}
+            </>
+          ))
+        }
+      </p>
+      {publication.abstract && <p class="mt-5 max-w-3xl leading-7 text-muted">{publication.abstract}</p>}
+      <ul class="mt-5 flex flex-wrap gap-1.5">
+        {publication.keywords.map((keyword) => <Tag>{keyword}</Tag>)}
+      </ul>
+      <div class:list={['flex flex-wrap gap-3', publication.links.length > 0 && 'mt-7']}>
+        {
+          publication.links.map((link, i) => (
+            <a
+              href={link.href}
+              class={`btn ${i === 0 ? 'btn-primary' : 'btn-secondary'}`}
+              rel="noopener noreferrer"
+            >
+              {link.label}
+              <Icon name="external" />
+            </a>
+          ))
+        }
+      </div>
+    </article>
+  </Section>
+
+  <!-- Compiler engineering (deliberately compact: a side interest, not the headline) -->
+  <Section id="compilers" index="06" title="Compiler engineering" intro={compilersIntro}>
+    <ul class="divide-y divide-line border-y border-line">
+      {
+        compilerProjects.map((project) => (
+          <li class="grid gap-2 py-5 sm:grid-cols-[10rem_1fr_auto] sm:items-baseline sm:gap-8">
+            <h3 class="font-semibold text-fg">{project.data.title}</h3>
+            <div>
+              <p class="text-sm leading-6 text-muted">{project.data.summary}</p>
+              <p class="mt-1.5 font-mono text-xs text-faint">{project.data.stack.join(' / ')}</p>
+            </div>
+            {
+              project.data.repo ? (
+                <a
+                  href={project.data.repo}
+                  class="inline-flex items-center gap-1.5 text-sm text-accent hover:text-fg"
+                  rel="noopener noreferrer"
+                >
+                  Source
+                  <span class="sr-only"> of {project.data.title}</span>
+                  <Icon name="external" />
+                </a>
+              ) : (
+                <span class="inline-flex items-center gap-1.5 text-sm text-faint">
+                  <Icon name="lock" />
+                  {project.data.proprietary ? 'Closed source' : 'Private'}
+                </span>
+              )
+            }
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <!-- Contact -->
+  <Section id="contact" index="07" title="Get in touch" intro={contactText}>
+    <ul class="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
+      {
+        contactLinks.map((link) => (
+          <li class="bg-ink">
+            <a
+              href={link.href}
+              class="group flex items-center gap-4 p-5 transition-colors hover:bg-surface"
+              rel="noopener noreferrer"
+            >
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-line text-muted transition-colors group-hover:border-accent/60 group-hover:text-accent">
+                <Icon name={link.icon} class="h-5 w-5" />
+              </span>
+              <span class="min-w-0">
+                <span class="block font-mono text-xs tracking-widest text-faint uppercase">
+                  {link.label}
+                </span>
+                <span class="block truncate text-sm text-fg">{link.value}</span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+</BaseLayout>

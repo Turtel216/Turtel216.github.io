@@ -1,0 +1,127 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import Icon from '@/components/Icon.astro';
+import Tag from '@/components/Tag.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { profile } from '@/data/site';
+
+// Compiler projects link straight to their repositories and do not get a page.
+export const getStaticPaths = (async () => {
+  const projects = await getCollection(
+    'projects',
+    ({ data }) => !data.draft && data.category !== 'compiler',
+  );
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, summary, stack, highlights, category, period, role, status, repo, demo, proprietary } =
+  project.data;
+const { Content } = await render(project);
+
+const categoryLabel = category === 'data' ? 'Data Engineering' : 'Web Development';
+const repoHost = repo ? new URL(repo).hostname : '';
+const repoIcon = repoHost.includes('gitlab') ? 'gitlab' : 'github';
+
+const facts = [
+  { label: 'Category', value: categoryLabel },
+  { label: 'Status', value: status },
+  { label: 'Period', value: period },
+  { label: 'Role', value: role },
+].filter((fact): fact is { label: string; value: string } => Boolean(fact.value));
+---
+
+<BaseLayout title={`${title} | ${profile.name}`} description={summary}>
+  <article class="mx-auto max-w-5xl px-6 pt-14 pb-24">
+    <a href="/#projects" class="inline-flex items-center gap-2 text-sm text-muted hover:text-accent">
+      <Icon name="arrow" class="h-4 w-4 rotate-180" />
+      All projects
+    </a>
+
+    <header class="mt-10 border-b border-line pb-10">
+      <p class="mb-4 font-mono text-sm text-accent">{categoryLabel}</p>
+      <h1 class="text-3xl font-semibold tracking-tight text-fg sm:text-4xl">{title}</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-muted">{summary}</p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        {
+          repo && (
+            <a href={repo} class="btn btn-primary" rel="noopener noreferrer">
+              <Icon name={repoIcon} />
+              View source
+            </a>
+          )
+        }
+        {
+          demo && (
+            <a href={demo} class="btn btn-secondary" rel="noopener noreferrer">
+              Visit site
+              <Icon name="external" />
+            </a>
+          )
+        }
+        {
+          proprietary && !repo && (
+            <span class="inline-flex items-center gap-2 rounded-md border border-line px-4 py-2.5 text-sm text-faint">
+              <Icon name="lock" />
+              Closed source
+            </span>
+          )
+        }
+      </div>
+    </header>
+
+    <div class="grid gap-12 pt-10 lg:grid-cols-[1fr_17rem]">
+      <div class="prose min-w-0 [&>:first-child]:mt-0">
+        <Content />
+      </div>
+
+      <aside class="space-y-8 self-start lg:sticky lg:top-24">
+        {
+          facts.length > 0 && (
+            <dl class="space-y-4">
+              {facts.map((fact) => (
+                <div>
+                  <dt class="font-mono text-xs tracking-widest text-faint uppercase">{fact.label}</dt>
+                  <dd class="mt-1 text-sm text-fg">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )
+        }
+
+        {
+          stack.length > 0 && (
+            <div>
+              <h2 class="mb-3 font-mono text-xs tracking-widest text-faint uppercase">Stack</h2>
+              <ul class="flex flex-wrap gap-1.5">
+                {stack.map((tech) => (
+                  <Tag>{tech}</Tag>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        {
+          highlights.length > 0 && (
+            <div>
+              <h2 class="mb-3 font-mono text-xs tracking-widest text-faint uppercase">Highlights</h2>
+              <ul class="list-disc space-y-2 pl-4 text-sm leading-6 text-muted marker:text-accent">
+                {highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

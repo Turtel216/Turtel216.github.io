@@ -1,0 +1,36 @@
+---
+import Icon from '@/components/Icon.astro';
+import { profile } from '@/data/site';
+
+const year = new Date().getFullYear();
+const links = [
+  { label: 'GitHub', href: profile.social.github, icon: 'github' },
+  { label: 'GitLab', href: profile.social.gitlab, icon: 'gitlab' },
+  { label: 'LinkedIn', href: profile.social.linkedin, icon: 'linkedin' },
+  { label: 'Email', href: `mailto:${profile.email}`, icon: 'mail' },
+] as const;
+---
+
+<footer class="border-t border-line">
+  <div
+    class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-faint sm:flex-row"
+  >
+    <p>&copy; {year} {profile.name}</p>
+    <ul class="flex items-center gap-5">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="block text-faint transition-colors hover:text-accent"
+              aria-label={link.label}
+              rel="noopener noreferrer"
+            >
+              <Icon name={link.icon} class="h-5 w-5" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>

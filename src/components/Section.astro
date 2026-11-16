@@ -1,0 +1,24 @@
+---
+interface Props {
+  id: string;
+  /** Two-digit label shown above the title, for example "01". */
+  index: string;
+  title: string;
+  intro?: string;
+}
+
+const { id, index, title, intro } = Astro.props;
+---
+
+<section id={id} aria-labelledby={`${id}-title`} class="border-t border-line py-20 sm:py-24">
+  <div class="mx-auto max-w-5xl px-6">
+    <header class="mb-10 max-w-2xl">
+      <p class="mb-3 font-mono text-xs tracking-widest text-accent uppercase">{index}</p>
+      <h2 id={`${id}-title`} class="text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
+        {title}
+      </h2>
+      {intro && <p class="mt-4 leading-7 text-muted">{intro}</p>}
+    </header>
+    <slot />
+  </div>
+</section>

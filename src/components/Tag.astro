@@ -1,0 +1,14 @@
+---
+interface Props {
+  /** "accent" tints the tag purple; use it sparingly. */
+  variant?: 'default' | 'accent';
+}
+
+const { variant = 'default' } = Astro.props;
+const styles =
+  variant === 'accent'
+    ? 'border-accent/30 bg-accent-soft text-accent'
+    : 'border-line bg-surface text-muted';
+---
+
+<li class={`rounded border px-2 py-0.5 font-mono text-xs ${styles}`}><slot /></li>

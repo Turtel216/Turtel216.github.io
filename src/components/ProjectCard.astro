@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from '@/components/Icon.astro';
+import Tag from '@/components/Tag.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, summary, stack, highlights, category, period, status } = project.data;
+const categoryLabel = category === 'data' ? 'Data Engineering' : 'Web Development';
+---
+
+<article
+  class="group relative flex h-full flex-col rounded-lg border border-line bg-surface p-6 transition-colors hover:border-accent/60"
+>
+  <p class="mb-3 flex items-center justify-between gap-3 font-mono text-xs text-faint">
+    <span class="text-accent">{categoryLabel}</span>
+    {
+      status ? (
+        <span class="rounded border border-line px-1.5 py-0.5 text-muted">{status}</span>
+      ) : (
+        period && <span>{period}</span>
+      )
+    }
+  </p>
+
+  <h3 class="text-lg font-semibold tracking-tight text-fg">
+    <a href={`/projects/${project.id}/`} class="after:absolute after:inset-0 after:rounded-lg">
+      {title}
+    </a>
+  </h3>
+  <p class="mt-2 text-sm leading-6 text-muted">{summary}</p>
+
+  {
+    highlights.length > 0 && (
+      <ul class="mt-4 list-disc space-y-1.5 pl-4 text-sm leading-6 text-muted marker:text-accent">
+        {highlights.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  <ul class="mt-5 flex flex-wrap gap-1.5">
+    {stack.map((tech) => <Tag>{tech}</Tag>)}
+  </ul>
+
+  <p
+    class="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-fg transition-colors group-hover:text-accent"
+    aria-hidden="true"
+  >
+    Read more
+    <Icon name="arrow" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+  </p>
+</article>
