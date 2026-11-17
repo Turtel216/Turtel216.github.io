@@ -127,16 +127,17 @@ export const aboutFacts: { label: string; value: string }[] = [
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Languages',
-    skills: ['Python', 'SQL', 'Scala', 'TypeScript', 'Go', 'Haskell', 'Java'],
+    skills: ['Python', 'SQL', 'Scala', 'TypeScript', 'Rust', 'Haskell', 'Java'],
   },
   {
     title: 'Processing and orchestration',
-    skills: ['Apache Spark', 'Apache Kafka', 'Apache Airflow', 'dbt', 'Apache Flink', 'Pandas', 'Polars'],
+    skills: ['Apache Spark', 'Apache Kafka', 'Apache Airflow', 'dbt', 'Pandas'],
   },
   {
     title: 'Storage and modelling',
     skills: [
       'PostgreSQL',
+      'MySQL',
       'Snowflake',
       'Delta Lake',
       'Apache Iceberg',
